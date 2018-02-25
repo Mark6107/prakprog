@@ -1,0 +1,18 @@
+Questions 0
+
+    How do you search your man-pages for a given keyword?
+    Hint: man man|grep -A1 -B1 -m1 keyword
+	
+    Suppose you need to type the command basename. Which characters do you need to type in your system before bash completion can complete your typing?
+	
+    In many systems bash completion can also complete long options to many POSIX utilities. Does your bash completes long options? Suppose you need to type the command mkdir --parents. Which characters do you need to actually type when using bash completion?
+    
+How do you create a folder with a subfolder (say prog/hello)? Hint: man mkdir | grep -B1 "make parent".
+    Which option instructs the rm command to ask the user for a confirmation before every removal? Hint: man rm|grep "prompt before".
+    Which option instructs the rm command to remove a folder with all subfolders? Hint: man rm|grep -B1 "remove directories".
+    Which unix command lists the files in a directory in one column sorted by modification time with the newest last?
+    What do symbols ., .., ~ mean in the context of the unix file utilities?
+    Where will the command cd without any arguments lead you?
+    What is your home directory? Name also alternative notations. 
+
+

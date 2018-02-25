@@ -1,0 +1,38 @@
+1) How are arguments passed to functions, by value or by reference?
+Arguments passed are usually a copy of the value of the passed argument, but can get reference passed by using pointers.
+
+2) If double x=1.23, what is *(&x)? What is NULL?
+&x is pointer/reference, * dereferences the reference, so *(&x)=1.23
+NULL is empty pointer, can be used to clear pointer, or make sure that program crashes, if e.g. a for-loop goes to an array-element beyond the array index
+
+3) Function variables after function exit?
+They are cleared, e.g. giving p=10 inside a function will not be remembered when the function exits
+
+
+4) What is a static variable?
+A variable that is not cleared when exiting functions, e.g. if a function adds 1 to a static variable, it will be remembered even when the function exits
+Only for static local variable
+What about static global?
+
+5) What will the programs print?
+1: i=1	,	The function only locally changes 1 to 0
+2: i=0	,	The pointer for i is given to f, f says change value pointed at to 0
+3: i=1	,	Only in the function is the pointer=NULL
+
+6) What is passed, when a is an array and the function is void f(double a[])?
+Pointer to first element
+
+7) Can void f(double a[]) figure out the size of a?
+Nope, only point to first element
+
+8) What will happen if int a[5], and then a[7]=1?
+Nothing, but print of a[7] will fail with Segmentation failure
+
+9) Can a function return arrays of type: Static, variable-length, dynamic?
+It can return individual elements of the arrays, but not the array as a whole.
+It is much better to define arrays in main, and give the pointer to the functions.
+
+10) What will the program print?
+i=0
+i=1
+i=2

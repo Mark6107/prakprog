@@ -1,0 +1,41 @@
+1) Will functions leak memory?
+1: No
+2: No
+3: Yes
+4: No
+5: Yes, but as the pointer is returned, it can be freed
+
+2) Which of following lines will result in compilation error?
+vector y;
+
+3) Commands to create list of .c-files
+1, 2, maybe 5? (Too complicated to care)
+
+4) Where does the function get its parameters from?
+From the command line
+
+5) How to convert main parameter to double or int?
+atoi, ASCII to integer
+atof, ASCII to double
+
+6) What will the program print?
+a[2] = 2
+It remembers, that it is the same array, because of static
+
+7) What will the program print?
+a[2] = 1
+
+8) Can C-structure contain function and/or pointer to function?
+Both
+
+9) Which of the following is right?
+The second, struct g, as * gets priority
+
+10) Which of the two is valid?
+Both, &sin should be right, but C can also handle sin
+
+11) With f from 10), which of the following is correct?
+Both, it is ok to call pointer
+
+12) What is return value of malloc function?
+A pointer to the start of the array?

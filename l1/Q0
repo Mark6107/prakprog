@@ -1,0 +1,45 @@
+Questions 0
+1) How to search man for keyword
+
+man man|grep keyword
+man man|grep -An -Bn -mn keyword
+An gives n lines after each found keyword
+Bn gives n lines before each found keyword
+mn gives the n first results
+
+2) Bash completion af basename?
+
+You need to type basen, before it auto completes, as it shares base with other commands.
+
+3) Bash completion for mkdir --parents
+
+Need mkdir --p
+
+4) Folder with subfolder
+
+mkdir -p folder/subfolder
+
+5) Prompt before rm 
+
+rm -i
+
+6) rm of folder and subfolders
+
+rm -r
+
+7) Command for listing in one column
+
+ll
+
+8) Meaning of ., .., ~?
+
+. is current, .. is directory above, ~ is home
+
+9) Where does cd without arguments lead
+
+Home directory
+
+10) Name of home directory
+
+~
+$Home

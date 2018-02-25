@@ -1,0 +1,6 @@
+
+Main: Testing nvector_alloc ...
+Test passed!
+
+Main: Testing nvector_set and nvector_get ..
+Test passed!

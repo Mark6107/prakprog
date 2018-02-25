@@ -1,0 +1,60 @@
+1) What is main?
+The function the program runs at the very start, defined that way. Must return int 0 when done.
+
+2) What is compilation and linking, and what are the code-types?
+Compilation: Translates the C-functions into processer instructions language
+Linking: When compiling, it links the code with other files and librarys needed for the code to run. E.g. via #include <stdio.h>
+Source-code: The code written in C
+Object-code: The direct translation of C into processes language.
+Executable-code: Linking object code with libraries, making it all work
+
+3) How to compile and link hello.c? How to run?
+
+Via: gcc hello.c -o hello.o -lm 
+(lm only if math required)
+./hello.o
+
+4) How to supply compiler with printf? Why? How to link printf?
+
+#include<stdio.h>
+The code telling what printf does lies in stdio.h
+Linked when standing in preprocessor
+
+5) What is stdio.h? Why <>?
+
+stdio.h is the file with the script to declare functions like printf
+<>: Standard compiler include paths
+"": Also search in current directories
+
+6) How to get manual page for printf?
+
+man stdio|grep printf
+
+7) Data types for numbers?
+
+int: integers
+double: decimals
+
+8) What does the operation 1/2 yield in C?
+
+If int -> 1
+If double -> 0.5
+
+9) Can it work with undefined? Can variables hold more than one data type?
+
+No, it always have to be defined.
+No?
+
+10) What needs to be done to use mathematical functions in C?
+
+When compiling, link the math-library via: -lm
+
+11) What is tgmath.h, and do you need to link any libraries with it?
+
+Type Generic math. Can call all of the math.h functions, with data type arguments for the output (e.g. int to float)
+No, it links them itself.
+
+12) What is the pow function? Is there a complex cpow function?
+
+Power function, returns x to the power of y
+Yes...

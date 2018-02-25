@@ -1,0 +1,6 @@
+Variables used:
+a = 5
+b = 2
+tau = 1
+epsilon = 0.1
+Equal returns: 0

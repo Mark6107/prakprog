@@ -1,0 +1,51 @@
+1) Instruction to give all compiling warnings?
+-Wall: Most warnings
+-Wunused: All warnings
+
+2) Comparison operatores:
+==
+!=
+>
+<
+>=
+<=
+
+3) Rewrite (a>b?a:b) with if statement:
+if (a>b)
+	a
+else
+	b
+
+4) Do complex.h need -lm
+Yes
+
+5) What will the codes print?
+1 #Prints i before adding 1
+3 #One is added from i++ and then another is added from ++i before printf
+
+2 3 #Gives warning at ++i, but why 2 instead of 1?
+
+6) Rewrite while(condition) with for:
+If condition is number? i<50
+for (int i=0; i<50;++i)
+
+7) Rewrite for(init;cond;inc) with while:
+init;
+while(cond)
+{body;
+cont:
+inc;}
+
+8) Rewrite do body while(condition); with for:
+for(init;cond)
+body
+inc
+
+9) Is code valid?
+Yes, completely valid
+
+10) Boolean data types in C?
+No, instead of having 0 and 1 double as integers and true/false, the logical statements are instead based on integers.
+
+
+

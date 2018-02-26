@@ -1,0 +1,51 @@
+1) How to specify gnuplot axes range?
+Either in the plot command:
+plot ['trange'] ['xrange'] ['yrange'] f(t),h(t)
+Or:
+set xrange {[{min:max}]}
+
+2) How to seperate data in files for different lines?
+Two blank records (blank lines) seperate data sets
+
+3) How to use specific columns in gnuplot?
+plot 'datafile' using 3:1
+uses x = column 3, y = column 1
+if there are headers, they can also be used by either
+	column("header"):column("number of column")
+	"header1":"header2"
+
+4) How to plot y**2 vs x?
+plot 'datafile' using 1:($2*$2)
+
+5) How to find out if GSL is installed on box?
+gsl-config --prefix?
+
+6) How to find out what C-flags to use?
+gsl-config --cflags
+
+7) How to find out what libraries to use?
+gsl-config --libs
+
+8) Explain syntax `command` and $(command).
+When put into another command/commandline, the command is run in a subshell, and `command` is then replaced by the output in that subshell.
+
+9) Why do you need $$(command) in Makefiles?
+If it's a shell variable or command, you need to use double dollar sign
+
+10) What is "recipe echoing"?
+Instead of printing all lines of the recipe when make is made, @echo waits until the make command reaches that part of the recipe before printing, allowing make to print e.g. progress statements.
+
+11) What will the Makefile print?
+pwd
+directory
+a string
+directory
+
+pwd is bash command for present work directory
+1: pwd is not issued
+2: pwd is issued in another shell, result is echoed
+3: pwd is replaced with its definition in the Makefile
+4: pwd is issued in another shell
+
+12) What does the line mean?
+It deciphers the params pointer, and assigns it value to the double a

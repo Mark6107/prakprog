@@ -1,0 +1,65 @@
+1) What is EOF in scanf?
+EOF is End Of File. When scanf is done running, it sends a EOF-value back, that tells that it is done reading the data structure/file. In scanf it is simply EOF
+
+2) What are standard input, output and error in POSIX?
+stdin - input
+stdout - output
+stderr - error
+
+3) Where does printf write to?
+stdout?
+
+4) Where does scanf read from?
+stdin
+
+5) How to redirect stout to file?
+./hello > out.txt
+./hello >> out.txt #Appends
+
+6) How to send file to stdin?
+./prog < input.txt
+
+7) How to connect stdout to stdin?
+./hello | ./prog
+
+8) What does the makefile variables mean?
+$@: File name of target
+$<: Name of first prerequisite
+$^: Names of all prerequisites
+CFLAGS: Extra flags to give C compiler
+LDFLAGS: Extra flags to compiles, when invoking linker 'ld'
+LDLIBS: Flags for libraries, e.g. '-l'
+
+9) What will Makefile print?
+echo CFLAGS
+CFLAGS			# Just does it
+echo FFLAGS		
+FFLAGS			# $C sees the C = F command
+echo FFLAGS		
+FFLAGS			# Still only sees the C = F command
+echo -Wall -Ofast -std=c1x
+-Wall -Ofast -std=c1x		# It calls the whole CFLAGS definition
+
+10) Which of the Makefile's compiles main.c to main?
+1: Yes
+2: Yes
+3: Yes
+4: Yes
+5: Yes
+6: No, stops after main.o: main.c
+7: Yes
+8: Yes
+9: Yes
+
+11) Which Makefile's compiles three files correctly?
+1: Yes
+2: Yes
+3: Yes
+4: Yes
+5: Yes
+6: Yes
+7: Yes
+
+12) What does #define PI 3.1415927 do?
+double 3.1415927
+

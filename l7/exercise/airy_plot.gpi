@@ -1,0 +1,7 @@
+set terminal svg
+set output "airy_plot.svg"
+set style line 1 lt 1 lc rgb "red" lw 1
+set style line 2 lt 1 lc rgb "blue" lw 1
+
+plot 	"dat.txt" using 1:2 with line ls 1 title 'Ai(x)', \
+		'' using 1:3 with line ls 2 title 'Bi(x)'

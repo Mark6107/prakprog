@@ -1,0 +1,37 @@
+1) How to pass function to gsl_integration_qags?
+int gsl_integration_qags(const gsl_function * f, double a, double b, double epsabs, double epsrel, size_t limit, gsl_integration_workspace * workspace, double * result, double * abserr)
+
+2) What are the epsabs, epsrel, abserr arguments?
+epsabs and epsrel are set by the user, and are the absolute and relative error bounds, that the algorithm strives to get the deviation of the result within. abserr is the returned as the estimated error from result and actual result.
+
+3) What is type and value of gsl_integration_qags return?
+Type int.
+Status? (Maybe something like GSL_SUCCESS?)
+
+4) How does gsl_integration_qags return calculated result?
+In the double result argument.
+
+5) Does gsl_integration_qags estimate the error of the calculated result?
+Yes, in the abserr argument.
+
+6) If there are no extra parameters, what do one do with the params member of gsl_function?
+Set params = 0, and don't include them in the function?
+
+7) What is the limit argument?
+limit to how many subintervals the integration splits the interval into.
+
+8) What is the argument of gsl_integration_workspace_alloc?
+size_t n
+n is the number of double precision intervals. The amount of subintervals needed, i.e. limit can maximally be this number.
+
+9) Do you need to free memory after integration?
+Yes, gsl_integration_workspace_free
+
+10) Can you call any function that returns an integer, without spesifying a variable to store the integer in?
+Yes, it is just not used, maybe?
+
+11) How to only use absolute error and not relative error?
+Give the relative error argument as 0.
+
+12) What does the status GSL_EDIVERGE mean?
+The integral is either divergent, or too slowly convergent to be numerically integrated.

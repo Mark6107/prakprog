@@ -1,0 +1,12 @@
+set term svg enhanced 
+set termoption dashed
+set encoding utf8
+set out "h_plot.svg"
+set title "Hydrogen s-wave shooting" font "Helvetica,20"
+set xlabel "r [a_{Bohr}]" font "Helvetica,14"
+set ylabel "F_ε(r)" font "Helvetica,14"
+set style line 1 lc rgb "#000080" lw 3
+set style line 2 lt 2 lc rgb "red" lw 2 dashtype 2
+
+plot 	"out.txt" index 1 using 1:2 with line ls 1 title 'r_{max} = 8',\
+		'' index 1 using 1:3 with line ls 2 title 'exact'

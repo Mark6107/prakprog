@@ -1,0 +1,5 @@
+set term svg enhanced
+set output "energyplot.svg"
+set encoding utf8
+
+plot "out.txt" using 1:2 with line title "E(α)"

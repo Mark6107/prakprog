@@ -1,0 +1,38 @@
+1) Where are the files gsl_multimin.h and gsl_multiroots.h?
+-I/usr/include
+
+2) What will Makefile do?
+make -> Run data and log
+Both data and log echoes their name into a file with their name
+Then the for-loop is run, where it for both data and log echoes their name, (-n for no \n at end), and then cats the contant of the file with their name
+
+3) Why does make fail with the following error?
+It doesn't find the .h file, as the directory it is in is not specified correctly. It needs to both have the right CFLAGS and LDLIBS arguments. And gsl/ in front of gsl_sf.h
+
+4) Why does make fail with the following error?
+It needs the LDLIBS references. 
+
+5) Will the following function definition work?
+Yes, it defines it locally, and has therefore no trouble?
+
+6) Will the following function definition work?
+Yes, defined in local scope
+
+7) Will the following function definition work?
+Initially defines the function, and parameters were given before print
+
+8) Will the following function definition work?
+No, parameters not given in function call or function definition, other scope.
+
+9) Will call to function work?
+Yes, f in scope, and hands its pointer to print_f_of_one
+
+10) Will call to function work?
+No, it is a generally defined function, it has no pointer within scopes
+
+11) Explain difference between echo 'argument' and echo `argument`.
+'' inserts argument "as string"
+`` runs argument in another shell, and returns output
+
+12) Write a C-program that emulates echo.
+myecho.c and myecho

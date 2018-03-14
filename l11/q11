@@ -1,0 +1,17 @@
+1) How to find declaration of structure in root.c?
+gcc -E -P root.c|grep -B8 'gsl_multiroot_fsolver'
+-E: Stop after preprocessing. Preprocessed source code sent to stdout
+-P: Inhibit generation of linemarkers. Keeps \n and the like, to make it readable?
+-B8: print 8 lines before context
+
+2) Find out the declaration of the gsl_multimin_fminimizer structure.
+gsl_multimin_fminimizer * s = gsl_multimin_fminimizer_alloc(T,2);
+gsl_multimin_fnimizer_set(s,&function,startpoint,stepsize);
+
+3) During multiroot iteration, how can one find the current root and values?
+gsl_vector_get(solver->x,0); for root
+gsl_vector_get(solver->f,0); for function value
+
+4) During multimin iteration, how can one find current min and value?
+gsl_vector_get(solver->x,n); n'th coordinate
+gsl_vector_get(solver->f,n); n'th function value (but always only one?)

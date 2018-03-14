@@ -1,0 +1,40 @@
+1) How to allocate GSL vectors and matrices?
+gsl_vector* v = gsl_vector_alloc(n);
+gsl_matrix* A = gsl_matrix_alloc(n,m);
+
+2) Do you neew to manually free memory allocated for vectors and matrices?
+If you use alloc functions, not if you view arrays
+
+3) GSL functions for adding GSL-vectors?
+int gsl_vector_add(a,b);
+int gsl_blas_saxpy(alpha, a, b);
+
+4) GSL functions for multiplying matrix and vector?
+int gsl_blas_sgemv(TransA, alpha, *A, *x, beta, *y); alpha*A*x+beta*y
+
+5) GSL functions for adding matrices?
+int gsl_matrix_add(&A.matrix, &B.matrix);
+
+6) GSL functions for multyplying matrices?
+int gsl_blas_sgemm(TransA,TransB,alpha,*A,*B,beta,*C);
+
+7) How to solve Ax=b with GSL?
+gsl_linalg_HH_solve
+gsl_linalg_LU_decomp/solve
+gsl_linalg_QR_decomp/solve
+
+8) What does gsl_blas_dgemm do?
+Matrix-matrix product and sum (alpha*A*B+beta*C) with double real precision
+
+9) Is the matrix preserved after gsl_linalg_LU_decomp?
+PA=LU, A is changed to U
+
+10) How to find declaration of struct gsl_odeiv2_system?
+
+
+11) How to sort eigenvalues and eigenvectors?
+int gsl_eigen_symmv_sort(eval,evec,sort_type);
+
+12) How to obtain eigenvector corresponding to lowest eigenvalue?
+Sort with sort_type GSL_EIGEN_SORT_VAL_ASC and take first entry
+

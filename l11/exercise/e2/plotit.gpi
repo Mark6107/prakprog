@@ -1,0 +1,10 @@
+set term svg enhanced
+set out "fit.svg"
+
+set title "Fit to radioactive decay" font "Helvetica,16"
+set xlabel "t" font "Helvetica,14"
+set ylabel "y" font "Helvetica,14"
+set grid
+
+plot "out.txt" index 0 w yerr title "Data",\
+		'' index 1 using 1:2 with line title "Fit"

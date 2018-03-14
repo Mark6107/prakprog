@@ -1,0 +1,41 @@
+1) How to specify:
+title:      \title{}
+author:     \author{}
+abstract:   \begin{abstract}...\end{abstract}
+
+2) How to format text to two columns?
+\documentclass[twocolumn]{article}
+
+3) How to start new:
+paragraph: Blank line
+subsection: \subsection{name}
+section: \section{name}
+
+4) How to write inline math?
+$mathstuff$
+
+5) Environment for displayed equations?
+equation, but align can the same and more
+
+6) Refer to equation number?
+In align environment specify a label with \label{.|.}
+Then \eqref{.|.}
+
+7) Environment for floating figures?
+\begin{figure}...\includegraphics{}...\end{figure}
+
+8) How to add caption to figure?
+In environment, after include, use \caption{...}
+
+9) Refer to figure number?
+In figure environment, add \label{}, then use \ref{}
+
+10) Environment for floating tables?
+\begin{tabular}
+
+11) What is the difference between table and tabular?
+tabular is the table itself, table is for positioning arguments, captions and so forth
+
+12) Is packages needed for including figures in PDF format, LaTeX format?
+\usepackage{graphicx} can take PDF
+pdflatex?

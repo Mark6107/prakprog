@@ -1,0 +1,21 @@
+set term svg enhanced
+set out "pathplot.svg"
+set encoding utf8
+set multiplot layout 2,1 title ""
+set tmargin 2
+set title "Iteration path" font "Helvetica,16"
+set xlabel "x" font "Helvetica,14"
+set ylabel "y" font "Helvetica,14"
+set grid
+unset key
+plot "out.txt" using 2:3 with line
+set grid
+#
+set title "Iteration function values" font "Helvetica,16"
+set xlabel "Iteration #"
+set ylabel "f(x,y)"
+unset key
+set format y "10^{%L}"
+set logscale y
+plot "out.txt" using 1:4 with line
+unset multiplot

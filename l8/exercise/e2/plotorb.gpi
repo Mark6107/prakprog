@@ -1,0 +1,9 @@
+set terminal svg
+set output "plotorb.svg"
+set style line 1 lc rgb "#800000"
+set style line 2 lc rgb "#000080"
+set style line 3 lc rgb "#2E8B57"
+
+plot "out.txt" index 0 using (1/$2)*sin($1):(1/$2)*cos($1) with line title 'Orbit I',\
+	'' index 1 using (1/$2)*sin($1):(1/$2)*cos($1) with line title 'Orbit II',\
+	'' index 2 using (1/$2)*sin($1):(1/$2)*cos($1) with line title 'Orbit III'

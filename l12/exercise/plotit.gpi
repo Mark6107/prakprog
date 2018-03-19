@@ -1,0 +1,8 @@
+set term pdf enhanced
+set out "ferr.pdf"
+
+set xlabel "x" font "Helvetica,20"
+set ylabel "erf(x)" font "Helvetica,20"
+set grid
+set key font "Helvetica,18"
+plot [ ] [-1.5:1.5] "out.txt" w line title "Result from integration"

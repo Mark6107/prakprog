@@ -1,14 +1,5 @@
 Following is the iteration numbers (iter), the points where the algorithm calculated the gradient (x), and the gradients of the points (f(x))
-iter =   0 , x = -10.000,-5.000 , f(x) =  4.199e+04,-2.100e+04
-iter =   1 , x = -5.050,1.000 , f(x) =  9.801e+03,-4.900e+03
-iter =   2 , x = -3.424,1.000 , f(x) =  4.289e+03,-2.145e+03
-iter =   3 , x = -2.158,1.000 , f(x) =  1.464e+03,-7.318e+02
-iter =   4 , x = -1.503,1.000 , f(x) =  5.036e+02,-2.518e+02
-iter =   5 , x = -1.159,1.000 , f(x) =  1.375e+02,-6.873e+01
-iter =   6 , x = -1.030,1.000 , f(x) =  2.442e+01,-1.221e+01
-iter =   7 , x = -1.002,1.000 , f(x) =  1.751e+00,-8.754e-01
-iter =   8 , x = -1.000,1.000 , f(x) =  2.588e-02,-1.294e-02
-iter =   9 , x = -1.000,1.000 , f(x) =  2.825e-05,-1.413e-05
-iter =  10 , x = -1.000,1.000 , f(x) =  4.569e-10,-2.284e-10
+iter = 0 , x = 1.000,3.000 , f(x) = -8.000e+02, 4.000e+02
+iter = 1 , x = 1.000,1.000 , f(x) = -8.948e-14, 4.441e-14
 Status = success
-Total number of iterations =  10
+Total number of iterations =   1

@@ -1,0 +1,14 @@
+set term pdf enhanced
+set out "fig.pdf"
+set grid 
+set style line 1 lc rgb "#000080" lw 2
+set style line 2 lc rgb "#800000" lw 2
+set style line 3 lc rgb "#00008B" lw 2
+set style line 4 lc rgb "#DAA520" lw 2
+set xlabel "x" font "Helvetica,18"
+set ylabel "J_n(x)"
+
+plot "out.txt" index 0 using 2:3 w line ls 1 title "J_0(x)", \
+	''	index 1 using 2:3 w line ls 2 title "J_1(x)", \
+	''	index 2 using 2:3 w line ls 3 title "J_2(x)", \
+	''	index 3 using 2:3 w line ls 4 title "J_3(x)"

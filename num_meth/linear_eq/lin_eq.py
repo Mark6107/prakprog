@@ -36,12 +36,27 @@ class matrix(object):
     def __setitem__(self,ij,x):
         i,j=ij; self.set(i,j,x)
 
+def copy(A):
+    B = matrix(A.size1,A.size2)
+    for i in range(A.size1):
+        for j in range(A.size2):
+            B[i,j] = A[i,j]
+    return B
+
 def multiply(A:matrix,B:matrix):
     C = matrix(A.size1,B.size2)
     for i in range(C.size1):
         for j in range(C.size2):
             C[i,j] = sum([A[i,l]*B[l,j] for l in range(A.size2)])
     return C
+
+def multiplyv(A:matrix,v:list):
+    assert(A.size2==len(v))
+    b = []
+    for i in range(len(v)):
+        b.append(sum([A[i,j]*v[j] for j in range(len(v))]))
+    return b
+
 
 def trans(A:matrix):
     B = matrix(A.size2,A.size1)

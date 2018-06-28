@@ -1,15 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from math import *
 import random
 
-sns.set_palette('colorblind')
-sns.set_color_codes(palette='colorblind')
-plt.style.use('seaborn-poster')
-
-def bise(x:list,z:float):
-    """Binary search for z in x. If no exact value, return integer of closest lower value"""
+def bise(x,z):
+    """
+    Binary search for z in x. If no exact value, return integer of closest lower value
+        - x: list
+        - z: float
+    """
     L = 0; R = len(x)-1; F = False;
     m = floor((L+R)/2.)
     while(L<=R):
@@ -23,14 +22,33 @@ def bise(x:list,z:float):
     return m
 
 def linterp(x:list,y:list,z:float):
+    """
+    Linear interpolation to point z
+        - x: list of known x-values
+        - y: list of known y(x)-values
+        - z: float within range of x
+    """
+
+    " Binary search for lower closest index "
     m = bise(x,z)
+    " Calculate point "
     p = (y[m+1]-y[m])/(x[m+1]-x[m])
     return y[m] + p*(z-x[m]),m
 
 def linterp_integ(x:list,y:list,z:float):
+    """
+    Numerical linear integration from x[0] to interpolated point z
+        - x: list of known x-values
+        - y: list of known y(x)-values
+        - z: float within range of x
+    """
+
+    " Find linear interpolation of point "
     yz,m = linterp(x,y,z)
+    " Extend lists "
     x = x[:m+1] + [z]
     y = y[:m+1] + [yz]
+    " Integrate numerically "
     s = 0
     for i in range(len(x)-1):
         a = (y[i+1]-y[i])/(x[i+1]-x[i])
@@ -38,6 +56,7 @@ def linterp_integ(x:list,y:list,z:float):
         s += a/2.*(x[i+1]**2-x[i]**2) + b*(x[i+1]-x[i])
     return s
 
+" Testing linear interpolation and integration of example data, outputting to figA.pdf "
 xt = list(range(1,11))
 yt = [1,2,4,8,16,32,40,44,46,47]
 zt = [min(xt)+random.random()*(max(xt)-min(xt)) for i in range(50)]

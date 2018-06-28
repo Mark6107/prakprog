@@ -1,0 +1,4 @@
+Initializing gravitational numerical simulation of 3 objects
+in the time interval t=[0.0:2.0].
+Simulation finished after 19066 steps!
+See solution in plot.pdf!

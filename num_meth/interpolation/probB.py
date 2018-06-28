@@ -1,19 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from math import *
 import random
 
-sns.set_palette('colorblind')
-sns.set_color_codes(palette='colorblind')
-plt.style.use('seaborn-poster')
 
 def intex(y,b,c,xi,z):
     """Analytical solution to integral of S_i(x), to avoid complicated expressions"""
     return y*z+b*(z**2/2.-xi*z)+c*(z**3/3.-xi*z**2+xi**2*z)
 
-def bise(x:list,z:float):
-    """Binary search for z in x. If no exact value, return integer of closest lower value"""
+def bise(x,z):
+    """
+    Binary search for z in x. If no exact value, return integer of closest lower value
+        - x: list
+        - z: float
+    """
     L = 0; R = len(x)-1; F = False;
     m = floor((L+R)/2.)
     while(L<=R):
@@ -27,16 +27,29 @@ def bise(x:list,z:float):
     return m
 
 def qspline(x:list,y:list,z:float,res:int):
+    """
+    Quadratic spline of point z, with possibility of calculating integral
+        - x: list of known x-values
+        - y: list of known y(x)-values
+        - z: float within range of x
+        - res: what to return, 1 = derivative, -1 = integral, 0 = y(z)
+    """
+    
+    " Calculation of coefficients "
     p = [(y[i+1]-y[i])/(x[i+1]-x[i]) for i in range(len(x)-1)]
     c = [0]
     for i in range(len(x)-2):
         c += [(p[i+1]-p[i]-c[i]*(x[i+1]-x[i]))/(x[i+2]-x[i+1])]
     b = [p[i]-c[i]*(x[i+1]-x[i]) for i in range(len(x)-1)]
+    " Determine y(z) "
     m = bise(x,z)
     yz = y[m] + b[m]*(z-x[m])+c[m]*(z-x[m])**2
+    " Different outputs " 
     if res==1:
+        " Derivative "
         return b[m]+2*c[m]*(z-x[m])
     elif res==-1:
+        " Integral "
         x = x[:m+1] + [z]
         y = y[:m+1] + [yz]
         s = 0
@@ -44,13 +57,14 @@ def qspline(x:list,y:list,z:float,res:int):
             s += intex(y[i],b[i],c[i],x[i],x[i+1])-intex(y[i],b[i],c[i],x[i],x[i])
         return s
     elif res==0:
+        " y(z) "
         return yz
     else:
         print("Invaled definition of res")
         return None
 
 
-
+" Testing quadratic interpolation, derivative and integration of example data, outputting to figB.pdf "
 xt = list(range(1,11))
 yt = [1,2,4,8,16,32,40,44,46,47]
 zt = [min(xt)+random.random()*(max(xt)-min(xt)) for i in range(50)]

@@ -1,0 +1,6 @@
+Interpolating in 1D.
+Using activation function:
+f(x) = x*exp(-x*x)
+Number of hidden neurons: 15
+Training with 30 points, and interpolating 6 points.
+Graphical result shown in plotA.pdf

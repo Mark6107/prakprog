@@ -1,0 +1,6 @@
+Interpolating in 2D.
+Using activation function:
+f(x) = x*exp(-x*x)*y*exp(-y*y)
+Number of hidden neurons: 15
+Training with 50 points, and interpolating 10 points.
+Graphical result shown in plotB.pdf

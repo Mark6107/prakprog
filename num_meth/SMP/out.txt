@@ -1,0 +1,36 @@
+Starting multiprocessing of MC-integration
+with N=10^[3:7]
+
+This output is not real-time based, which is why the multiprocessing
+can't be seen from this. To see it, run make and look at the stderr output.
+
+Initializing MC-integration of
+test-function with N=10^3
+
+Finalized integration with N=10^3!
+Q=1.4262461024691877, E=0.09382526980199865
+
+Initializing MC-integration of
+test-function with N=10^4
+
+Finalized integration with N=10^4!
+Q=5.457610242447944, E=4.069883658251208
+
+Initializing MC-integration of
+test-function with N=10^5
+
+Finalized integration with N=10^5!
+Q=1.8223406000413953, E=0.4077646172552647
+
+Initializing MC-integration of
+test-function with N=10^6
+
+Finalized integration with N=10^6!
+Q=1.4340523922161736, E=0.04119853515314008
+
+Initializing MC-integration of
+test-function with N=10^7
+
+Finalized integration with N=10^7!
+Q=1.4002793061456276, E=0.01108590241991453
+

@@ -1,21 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 from math import *
 import random
 from scipy import interpolate
 
-sns.set_palette('colorblind')
-sns.set_color_codes(palette='colorblind')
-plt.style.use('seaborn-poster')
 
 def intex(y,h,b,c,d):
     """Integral of cubic spline, with Int(S_i) from x_i to x_i+1 substituted to h_i=x_i+1 - x_i
     Int(S_i) = y*h+1/2*b*h**2+1/3*c*h**3+1/4*d*h**4, suppresed _i on all"""
     return y*h+1/2*b*h**2+1/3*c*h**3+1/4*d*h**4
 
-def bise(x:list,z:float):
-    """Binary search for z in x. If no exact value, return integer of closest lower value"""
+def bise(x,z):
+    """
+    Binary search for z in x. If no exact value, return integer of closest lower value
+        - x: list
+        - z: float
+    """
     L = 0; R = len(x)-1; F = False;
     m = floor((L+R)/2.)
     while(L<=R):
@@ -28,8 +28,16 @@ def bise(x:list,z:float):
         m = floor((L+R)/2.)
     return m
 
-def cspline(x:list,y:list,z:float,res=0):
-    """ Makes cubic spline of x and y to x value z, res defines whether to return spline value, differential value, or integral value"""
+def cspline(x,y,z,res=0):
+    """ 
+    Makes cubic spline of x and y to x value z
+        - x: list of known x-values
+        - y: list of known y(x)-values
+        - z: float
+        - res: what to return, 1 = derivative, -1 = integral, 0 = y(z)
+    """
+
+    " Calculate coefficients "
     n = len(x)
     h = [x[i+1]-x[i] for i in range(n-1)]
     p = [(y[i+1]-y[i])/h[i] for i in range(n-1)]
@@ -48,11 +56,16 @@ def cspline(x:list,y:list,z:float,res=0):
         b[i]=(B[i]-Q[i]*b[i+1])/D[i];
     c = [(-2*b[i]-b[i+1]+3*p[i])/h[i] for i in range(n-1)]
     d = [(b[i]+b[i+1]-2*p[i])/h[i]/h[i] for i in range(n-1)]
+
+    " Determine y(z) "
     m = bise(x,z)
     yz = y[m] + b[m]*(z-x[m]) + c[m]*(z-x[m])**2 + d[m]*(z-x[m])**3
+    " Different outputs "
     if res==0:
+        " y(z) "
         return yz
     elif res==-1:
+        " Integral "
         x = x[:m+1] + [z]
         y = y[:m+1] + [yz]
         h = h[:m] + [z-x[m]]
@@ -61,12 +74,13 @@ def cspline(x:list,y:list,z:float,res=0):
             s += intex(y[i],h[i],b[i],c[i],d[i])
         return s
     elif res==1:
+        " Derivative "
         return b[m]+2*c[m]*(z-x[m])+3*d[m]*(z-x[m])**2
     else:
         print('Invalid task type passed...')
         return None
 
-
+" Testing cubic interpolation, derivative and integration of example data, outputting to figC.pdf"
 xt = list(range(1,11))
 yt = [1,2,4,8,16,32,40,44,46,47]
 zt = [min(xt)+random.random()*(max(xt)-min(xt)) for i in range(50)]

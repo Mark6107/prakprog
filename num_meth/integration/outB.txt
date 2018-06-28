@@ -1,0 +1,12 @@
+Testing recursive adaptive integration with infinite limits
+Q=Integral,E=Error,S=Recursive steps taken
+
+f(x)=exp(-x^2), a=-inf, b=inf
+Q=1.772453626233708 , E=5.162878058650259e-08, S=11
+
+f(x)=exp(-3x), a=1, b=inf
+Q=0.33333333235775386 , E=4.661125751226056e-08, S=8
+
+f(x)=exp(3x), a=-inf, b=-1
+Q=6.695178968653559 , E=6.085250745674564e-08, S=10
+

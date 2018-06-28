@@ -1,0 +1,12 @@
+Solution to first system: x=9.10614674038601,y=1.0981593290681624e-05
+Call to A: 18
+Call to B: 24884
+Call to lib: 38
+Solution to Rosenbrock's function: x=0.9999999999999992,y=1.0000000000002842
+Call to A: 3
+Call to B: 1
+Call to lib: 5
+Solution to Himmelblau's function: x=-2.8051180869528345,y=3.131312518255037
+Call to A: 6
+Call to B: 22
+Call to lib: 16

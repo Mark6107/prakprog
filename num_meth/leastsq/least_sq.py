@@ -18,7 +18,8 @@ def lqfit(x:list,y:list,dy:list,f:list):
         for l in range(i+1,R.size2):
             Rin[i,l] /= R[i,i]
         for j in range(i-1,-1,-1):
-            Rin[j,i] = Rin[j,i] - R[j,i]*Rin[i,i]
+            for l in range(i,R.size2):
+                Rin[j,i] -= R[j,i]*Rin[i,l]
     
     c = multiply(multiply(Rin,trans(Q)),b)
     sig = multiply(Rin,trans(Rin))

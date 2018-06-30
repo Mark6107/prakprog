@@ -1,22 +1,9 @@
 from eigen_func import *
 import random
+import sys
 from timeit import Timer
 
-def Simpletest():
-
-    dat =  [[3, 2, 4],
-            [2, 0, 2],
-            [4, 2, 3]]
-    A = matrix(3,3)
-    A.view(dat)
-    V,D = Jac_eig(A)
-
-    print('Is V^TAV==D?\nD=')
-    D.show()
-    print('V^TAV=')
-    multiply(trans(V),multiply(A,V)).show()
-
-def ntest(n,prob='A',l=None):
+def ntest(n,prob='A1',l=None):
     A = matrix(n,n)
     for i in range(n):
         A[i,i] = random.uniform(-10,10)
@@ -24,69 +11,59 @@ def ntest(n,prob='A',l=None):
             c = random.uniform(-10,10)
             A[i,j] = c
             A[j,i] = c
-    if prob == 'A':
+    if prob == 'A1':
+        print('A=')
+        A.show()
+        V,D = Jac_eig(A)
+        print('V=')
+        V.show()
+        print('D=')
+        D.show()
+        print('V^TAV=')
+        multiply(trans(V),multiply(A,V)).show()
+    elif prob == 'A2':
         V,D = Jac_eig(A)
     elif prob == 'B':
         V,D = Jac_eig_n(A,n=l)
     
 def probA():
+    print('Task A, testing cyclic sweep diagonalization:\n')
+    ntest(5,prob='A1')
+
     time = []
     size = []
-    for n in range(2,20):
+    for n in range(2,10):
         size.append(n)
-        print(n)
-        t = Timer(lambda: ntest(n))
+        t = Timer(lambda: ntest(n,prob='A2'))
         time.append(t.timeit(number=3))
-
-    a = np.array([size,time])
-    a = a.T
-    np.savetxt('time.txt',a,fmt=['%d','%.3e'])
+    print('Testing O(n^3):')
+    for i in range(len(time)):
+        print('n={:2d},\ttime={}'.format(size[i],time[i]))
 
 def probB():
+    print('Task B, testing eigenvalue-by-eigenvalue:\n')
     # Simple matrix for testing
-    dat = [[3, 2, 4],
-           [2, 0, 2],
-           [4, 2, 3]]
-    B = matrix(3,3)
+    dat = [[3, 2, 5, 4],
+           [2, 0, 1, 2],
+           [5, 1, 2, 3],
+           [4, 2, 3, 1]]
+    B = matrix(4,4)
     B.view(dat)
-    
-    # Random matrox for final testing
-    l = 6
-    A = matrix(l,l)
-    for i in range(l):
-        A[i,i] = random.uniform(0,10)
-        for j in range(i,l):
-            c = random.uniform(0,10)
-            A[i,j] = c
-            A[j,i] = c
-    """
-    print('First {} eigenvalues:'.format(3))
-    V,D = Jac_eig_n(A,n=3)
-    D.show()
-    print('Lowest first')
-    V,D = Jac_eig_n(A)
-    D.show()
-    print('Highest first')
-    V,D = Jac_eig_n(A)
-    D.show()
-    """
-    tA = []
-    tB1 = []
-    tB2 = []
-    size = []
-    for n in range(2,20):
-        size.append(n)
-        print(n)
-        t1 = Timer(lambda: ntest(n,prob='A'))
-        tA.append(t1.timeit(number=3))
+    print('A=')
+    B.show()
+    print('From lowest eigenvalue:')
+    V,D1 = Jac_eig_n(B,trans=False)
+    D1.show()
+    print('From highest eigenvalue:')
+    B.view(dat)
+    V,D2 = Jac_eig_n(B,trans=True)
+    D2.show()
+    print('Testing n-dimension matrix\nt1: Time for cyclic diagonalization\nt2: Time for single eigenvalue\nt3: Time for all eigenvalues')
+    for n in range(2,10):
+        t1 = Timer(lambda: ntest(n,prob='A2'))
         t2 = Timer(lambda: ntest(n,prob='B',l=1))
-        tB1.append(t2.timeit(number=3))
         t3 = Timer(lambda: ntest(n,prob='B'))
-        tB2.append(t3.timeit(number=3))
-    a = np.array([size,tA,tB1,tB2])
-    a = a.T
-    header = 'Size\tcyclic\t1_value\tall_value'
-    np.savetxt('timeB.txt',a,header=header,fmt=['%d','%.3e','%.3e','%.3e'])
+        print('n={:2d}\tt1={:.10f}\tt2={:.10f}\tt3={:.10f}'.format(n,
+               t1.timeit(number=1),t2.timeit(number=1),t3.timeit(number=1)))
 
 
-probB()

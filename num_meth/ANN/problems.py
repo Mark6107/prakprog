@@ -2,12 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from mpl_toolkits.mplot3d import Axes3D
-import seaborn as sns
 from ann import *
 
-sns.set_palette('colorblind')
-sns.set_color_codes(palette='colorblind')
-plt.style.use('seaborn-poster')
 
 def fit2D(x,y):
     z = np.exp(-2*(x-0.5)**2-2*(y-0.5)**2)-np.exp(-(x-1)**2-(y-0.3)**2)
@@ -24,8 +20,8 @@ def probA():
     dat = np.ones((15,3)); x0 = np.linspace(a,b,15)
     for i in range(15):
         dat[i][0] = x0[i]
-
-    inter = interpol_1D(15,f)
+    n = 15
+    inter = interpol_1D(n,f)
     inter.train(xx,yy)
     xfit = np.linspace(a,b,6)
     yfit = inter.interpolate(xfit)
@@ -37,15 +33,13 @@ def probA():
     ax.set_ylabel('y')
     plt.legend(numpoints=1,loc=4)
     plt.savefig('plotA.pdf')
-
-    filA = open('probA.txt','w')
-    w = 'Interpolating in 1D.\n'
-    w+= 'Using activation function:\n'
-    w+= 'f(x) = x*exp(-x*x)\n'
-    w+= 'Number of hidden neurons: {}\n'.format(15)
-    w+= 'Training with {} points, and interpolating {} points.\n'.format(len(xx),len(xfit))
-    w+= 'Graphical result shown in plotA.pdf'
-    filA.write(w)
+    print('Problem A:\n')
+    print('Interpolating in 1D')
+    print('Using activation function:')
+    print('f(x) = x*exp(-x*x)\n')
+    print('Number of hidden neurons: {}'.format(n))
+    print('Training with {} points, and interpolating {} points.\n'.format(len(xx),len(xfit)))
+    print('Graphical result shown in plotA.pdf')
 
 def probB():
     xx = np.random.random(50); yy = np.random.random(50)
@@ -77,13 +71,10 @@ def probB():
     plt.tight_layout()
     plt.savefig('plotB.pdf')
     
-    filB = open('probB.txt','w')
-    w = 'Interpolating in 2D.\n'
-    w+= 'Using activation function:\n'
-    w+= 'f(x) = x*exp(-x*x)*y*exp(-y*y)\n'
-    w+= 'Number of hidden neurons: {}\n'.format(n)
-    w+= 'Training with {} points, and interpolating {} points.\n'.format(len(xx),len(xfit))
-    w+= 'Graphical result shown in plotB.pdf'
-    filB.write(w)
-probA()
-probB()
+    print('Problem B:\n')
+    print('Interpolating in 2D.')
+    print('Using activation function:')
+    print('f(x) = x*exp(-x*x)*y*exp(-y*y)\n')
+    print('Number of hidden neurons: {}'.format(n))
+    print('Training with {} points, and interpolating {} points.\n'.format(len(xx),len(xfit)))
+    print('Graphical result shown in plotB.pdf')

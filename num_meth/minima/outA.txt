@@ -1,0 +1,6 @@
+Minima of Rosenbrock's function using A: x=1.000000492434646,y=1.0000009848580553
+Steps taken: n=245010
+
+Minima of Himmelblau's function using A: x=-3.779310255331667,y=-3.283185999327713
+Steps taken: n=16
+

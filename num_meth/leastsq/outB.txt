@@ -1,0 +1,12 @@
+Problem B:
+
+Fitting own dataset with functions:
+[x*x,x,1]
+
+Fitted c parameters:
+[12.190270008883218, 3.3476698152281683, -16.32126812511602]
+
+Unceartainties of c parameters:
+[0.3576007304300508, 0.8859283852162958, 2.7726218909413807]
+
+Fit can be seen in plotB.pdf

@@ -45,32 +45,34 @@ def libfun_3(p):
     return [Himmelx(p),Himmely(p)]
 
 def probA():
+    print('Problem A:\n')
     f = [f1,f2]
     x0 = [3,-1]
     dx = 1e-9
     x1,_ = Newton_back(f,x0,dx)
-    print('Solution to first system: x={},y={}'.format(x1[0],x1[1]))
+    print('Solution to first system: x={},y={}\n'.format(x1[0],x1[1]))
     f = [Rosx,Rosy]
     x0 = [10,-1]
     dx = 1e-9
     x1,_ = Newton_back(f,x0,dx)
-    print('Solution to Rosenbrock\'s function: x={},y={}'.format(x1[0],x1[1]))
+    print('Solution to Rosenbrock\'s function: x={},y={}\n'.format(x1[0],x1[1]))
     f = [Himmelx,Himmely]
     x0 = [10,-1]
     dx = 1e-9
     x1,_ = Newton_back(f,x0,dx)
-    print('Solution to Himmelblau\'s function: x={},y={}'.format(x1[0],x1[1]))
+    print('Solution to Himmelblau\'s function: x={},y={}\n'.format(x1[0],x1[1]))
 
 def probB():
+    print('Problem B:\n\nTesting solution finders, with A being back-tracking linesearch,\nB being with analytic Jacobian and lib function being scipy\'s optimize function\n')
     f = [f1,f2]
     J = [[f1x,f1y],[f2x,f2y]]
-    x0 = [3,-1]
+    x0 = [5,1]
     dx = 1e-9
     x1,n1 = Newton_back(f,x0,dx)
     x1,n2 = Newton_Jacobian(f,x0,J)
     libres = lib.root(libfun_1,x0)
     print('Solution to first system: x={},y={}'.format(x1[0],x1[1]))
-    print('Call to A: {}\nCall to B: {}\nCall to lib: {}'.format(n1,n2,libres.nfev))
+    print('Call to A: {}\nCall to B: {}\nCall to lib: {}\n'.format(n1,n2,libres.nfev))
     f = [Rosx,Rosy]
     J = [[Rosxx,Rosxy],[Rosyx,Rosyy]]
     x0 = [1.,400.]
@@ -79,7 +81,7 @@ def probB():
     x1,n2 = Newton_Jacobian(f,x0,J)
     libres = lib.root(libfun_2,x0)
     print('Solution to Rosenbrock\'s function: x={},y={}'.format(x1[0],x1[1]))
-    print('Call to A: {}\nCall to B: {}\nCall to lib: {}'.format(n1,n2,libres.nfev))
+    print('Call to A: {}\nCall to B: {}\nCall to lib: {}\n'.format(n1,n2,libres.nfev))
     f = [Himmelx,Himmely]
     J = [[Himmelxx,Himmelzz],[Himmelzz,Himmelyy]]
     x0 = [-5,5]
@@ -89,4 +91,3 @@ def probB():
     libres = lib.root(libfun_3,x0)
     print('Solution to Himmelblau\'s function: x={},y={}'.format(x1[0],x1[1]))
     print('Call to A: {}\nCall to B: {}\nCall to lib: {}'.format(n1,n2,libres.nfev))
-probB()

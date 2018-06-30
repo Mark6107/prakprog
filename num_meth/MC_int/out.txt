@@ -1,12 +1,14 @@
+Both problem A and B:
+
 Trying plain Monte Carlo integration with N=10^6 and following functions:
 Unit sphere in radial coordinates:
 f(t,p,r)=sin(p)*r^2
 Actual value: 4*pi/3=4.1887902047863905
-Q=4.179896270054032, E=0.004626257230199568
+Q=4.195180861024484, E=0.004630944608840251
 
 Rectangle, f(x,y)=x^2+4y
 a=[11,14], b=[7,10]
 Actual value: 1719
-Q=2085.27952468046, E=0.3412539108046133
+Q=1719.311395914828, E=0.19740811349054285
 
 For result from integral in exercise, see plot.pdf

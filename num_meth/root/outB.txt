@@ -1,0 +1,19 @@
+Problem B:
+
+Testing solution finders, with A being back-tracking linesearch,
+B being with analytic Jacobian and lib function being scipy's optimize function
+
+Solution to first system: x=9.106146740865688,y=1.0981593284834252e-05
+Call to A: 9
+Call to B: 32541
+Call to lib: 32
+
+Solution to Rosenbrock's function: x=0.9999999999999992,y=1.0000000000002842
+Call to A: 3
+Call to B: 1
+Call to lib: 5
+
+Solution to Himmelblau's function: x=-2.8051180869528345,y=3.131312518255037
+Call to A: 6
+Call to B: 22
+Call to lib: 16

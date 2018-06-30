@@ -3,11 +3,8 @@ from lin_eq import *
 
 def probA1():
     print('Task A.1:\n ')
-    dat = [[1, 1, 1],
-            [0, 2, 5],
-            [2, 5,-1],
-            [-2,3, 4]]
     A = matrix(4,3)
+    dat = np.random.rand(4,3)*4
     A.view(dat)
     print('Starting matrix')
     A.show()
@@ -25,7 +22,7 @@ def probA1():
 def probA2():
     print('\nTask A.2:\n')
     A = matrix(3,3)
-    dat =   np.random.rand(3,3)*4
+    dat = np.random.rand(3,3)*4
     A.view(dat)
     print('Starting matrix A:')
     A.show()
@@ -49,15 +46,19 @@ def probA2():
     
 
 def probB():
-    dat = [[3,0,2],
-           [2,0,-2],
-           [0,1,1]]
-    A = matrix(3,3)
+    print('Task B:\n')
+    A = matrix(4,4)
+    dat = np.random.rand(4,4)*5-2.5
     A.view(dat)
-    
+    print('Starting matrix A:')
+    A.show()
     Q,R = qr_gs_decomp(A)
     B = qr_gs_inverse(Q,R)
+    print('Inverse matrix B:')
+    B.show()
     print('Is AB=I?')
+    print('AB=')
     multiply(A,B).show()
+    print('BA=')
     multiply(B,A).show()
 

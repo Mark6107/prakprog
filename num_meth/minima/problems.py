@@ -1,12 +1,10 @@
 import numpy as np
 import scipy.optimize as lib
 import matplotlib.pyplot as plt
-import seaborn as sns
 from lin_eq import *
 from minima import *
-sns.set_palette('colorblind')
-sns.set_color_codes(palette='colorblind')
-plt.style.use('seaborn-poster')
+
+
 def Rosf(p):
     return (1-p[0]**2)+100*(p[1]-p[0]**2)**2
 def Rosdf(p):
@@ -49,18 +47,19 @@ def probA():
     x0 = [3,-1]
     x1,n1 = newton(Rosf,Rosdf,RosH,x0)
     print('Minima of Rosenbrock\'s function using A: x={},y={}'.format(x1[0],x1[1]))
-    print('Steps taken: n={}'.format(n1))
+    print('Steps taken: n={}\n'.format(n1))
     x0 = [-3,-3]
     x2,n2 = newton(Himmelf,Himmeldf,HimmelH,x0)
     print('Minima of Himmelblau\'s function using A: x={},y={}'.format(x2[0],x2[1]))
-    print('Steps taken: n={}'.format(n2))
+    print('Steps taken: n={}\n'.format(n2))
 
 def probB1():
     probA()
-    x0 = [3,-1]
+    print('Problem B.1:\n')
+    x0 = [4,1]
     x1,n1 = q_newton_broyden(Rosf,Rosdf,x0)
     print('Minima of Rosenbrock\'s function using B: x={},y={}'.format(x1[0],x1[1]))
-    print('Steps taken: n={}'.format(n1))
+    print('Steps taken: n={}\n'.format(n1))
     x0 = [-3,-3]
     x2,n2 = q_newton_broyden(Himmelf,Himmeldf,x0)
     print('Minima of Himmelblau\'s function using B: x={},y={}'.format(x2[0],x2[1]))
@@ -74,6 +73,7 @@ def probB1():
     f.close()
 
 def probB2():
+    print('\nProblem B.2:\n')
     t,y,s = np.loadtxt('dat.txt').T
     f = lambda p: master(t,y,s,p)
     df = lambda p: masterdf(t,y,s,p)
@@ -81,6 +81,7 @@ def probB2():
     x1,n1 = q_newton_broyden(f,df,x0)
     print('Fitted decay function\'s parameters:')
     print('A={}\nT={}\nB={}'.format(x1[0],x1[1],x1[2]))
+    print('\nFit can be seen in plotB2.pdf')
     tt = np.linspace(0,10,100)
     fig,ax = plt.subplots(1,1)
     ax.plot(tt,life_f(x1,tt),'-b',label='Fit')
@@ -88,6 +89,5 @@ def probB2():
     ax.set_xlabel('t')
     ax.set_ylabel('y')
     ax.legend(numpoints=1)
-    plt.savefig('decay_fit.pdf')
+    plt.savefig('plotB2.pdf')
 
-probB2()

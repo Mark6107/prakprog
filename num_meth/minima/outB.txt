@@ -1,0 +1,41 @@
+Minima of Rosenbrock's function using A: x=1.000000492434646,y=1.0000009848580553
+Steps taken: n=245010
+
+Minima of Himmelblau's function using A: x=-3.779310255331667,y=-3.283185999327713
+Steps taken: n=16
+
+Problem B.1:
+
+Minima of Rosenbrock's function using B: x=6.193853228240849e+295,y=1.1443545960227626e+197
+Steps taken: n=82
+
+Minima of Himmelblau's function using B: x=-3.7793102488414876,y=-3.2831859911317918
+Steps taken: n=212
+
+
+Call to root:
+Solution to Rosenbrock's function: x=0.9999999999999992,y=1.0000000000002842
+
+Call to A: 3
+
+Call to B: 1
+
+Call to lib: 5
+
+Solution to Himmelblau's function: x=-2.8051180869528345,y=3.131312518255037
+
+Call to A: 6
+
+Call to B: 22
+
+Call to lib: 16
+
+
+Problem B.2:
+
+Fitted decay function's parameters:
+A=3.561441020442193
+T=3.21354313879827
+B=1.222228896735725
+
+Fit can be seen in plotB2.pdf

@@ -3,19 +3,31 @@ m x'' + l x' + k x = 0,
 with k=m=1 and varied l,
 in the interval t=[0.0,10.0]
 
+
 Solving for l=0.0
+
 Endpoint found after 104 steps.
 
+
 Solving for l=0.25
+
 Endpoint found after 91 steps.
 
+
 Solving for l=0.5
+
 Endpoint found after 79 steps.
 
+
 Solving for l=0.75
+
 Endpoint found after 68 steps.
 
+
 Solving for l=1.0
+
 Endpoint found after 61 steps.
 
+
 Output from solutions can be seen in plot.pdf
+Problem B is solved, as the saved path is used for plotting

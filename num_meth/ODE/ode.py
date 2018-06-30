@@ -1,6 +1,19 @@
-from lin_eq import *
+import numpy as np
 
-def driver(a:float,b:float,h:float,yt:array,f:array,stepper,acc=1e-3,eps=1e-3,n=0):
+def driver(a,b,h,yt,f,stepper,acc=1e-3,eps=1e-3,n=0):
+    """
+    Driver for Runge-Kutta solver
+        - a: float, starting point
+        - b: float, ending point
+        - h: float, guessed step-size
+        - yt: list, staring parameters
+        - f: list, set of differential equations
+        - stepper: Which stepper to use, rkstep12 or rkstep 34
+        - acc: float, absolute accuracy
+        - eps: float, relatice accuracy
+        - n: int, current step
+    """
+
     " Array for t values along path "
     t = np.array([a])
     " Nested array for all y(t) values "
@@ -15,8 +28,8 @@ def driver(a:float,b:float,h:float,yt:array,f:array,stepper,acc=1e-3,eps=1e-3,n=
             h = b-t[-1]
         " Call stepper and calculate error and tolerance "
         yi,syi = stepper(t[-1],h,yt,f)
-        ei = inner_v(syi)
-        toli = (eps*inner_v(yi)+acc)*np.sqrt(h/(b-a))
+        ei = np.sqrt(np.inner(syi,syi))
+        toli = (eps*np.sqrt(np.inner(yi,yi))+acc)*np.sqrt(h/(b-a))
         " Criterion for update "
         if ei<toli:
             t = np.append(t,t[-1] + h)
@@ -26,7 +39,7 @@ def driver(a:float,b:float,h:float,yt:array,f:array,stepper,acc=1e-3,eps=1e-3,n=
         h *= (toli/ei)**0.25*0.95
     return y_run,t,n
 
-def rkstep12(t:float,h:float,yt:array,f:array):
+def rkstep12(t:float,h:float,yt,f):
     " Two point method calculation "
     k0 = f(t,yt)
     k1 = f(t+h,yt+h*k0)
@@ -37,7 +50,7 @@ def rkstep12(t:float,h:float,yt:array,f:array):
     sy1 = h*(k-k0)
     return y1,sy1
 
-def rkstep34(t:float,h:float,yt:array,f:array):
+def rkstep34(t:float,h:float,yt,f):
     " Fourth order "
     k0 = f(t,yt)
     k1 = f(t+0.5*h,yt+0.5*h*k0)

@@ -1,6 +1,5 @@
 import numpy as np
-" My own modules "
-from lin_eq import *
+import matplotlib.pyplot as plt
 from ode import *
 
 def osc(t,y,m,k):
@@ -19,7 +18,7 @@ def osc_fric(t,y,m,k,c):
     df = np.array([y[1],-c/m*y[1]-k/m*y[0]])   
     return df
 
-def probA():
+def probAB():
     " Main body for calling the ODE-solver, which plots while varying inpu parameters "
     fig, ax = plt.subplots(2,1,sharex=True)
     " Initial conditions "
@@ -27,19 +26,15 @@ def probA():
     b = 10.
     h = 0.2
     yt = np.array([1,0])
-    " w is the collected string that is written to out.txt "
-    w = """Solving oscillation with damping force:
-m x\'\' + l x\' + k x = 0,
-with k=m=1 and varied l,
-in the interval t=[{},{}]\n\n""".format(a,b)
+    print( 'Solving oscillation with damping force:\nm x\'\' + l x\' + k x = 0,\nwith k=m=1 and varied l,\nin the interval t=[{},{}]\n\n'.format(a,b))
     
     " Loop over varied l "
     for l in np.array(range(5))/4.:
-        w += 'Solving for l={}\n'.format(l)
+        print('Solving for l={}\n'.format(l))
         " Make the diff. eq. only a function of t and y "
         f = lambda t,y: osc_fric(t,y,1,1,l)
         y,t,n = driver(a,b,h,yt,f,rkstep34)
-        w += 'Endpoint found after {} steps.\n\n'.format(n)
+        print('Endpoint found after {} steps.\n\n'.format(n))
         
         " Rest is plotting "
         ax[0].plot(t,[y[i][0] for i in range(len(y))],'--',label='l={}'.format(l))
@@ -55,9 +50,5 @@ in the interval t=[{},{}]\n\n""".format(a,b)
     ax[0].set_title('Dampened harmonic oscillation')
     plt.subplots_adjust(hspace=0.1)
     plt.savefig('plot.pdf')
-    " Write out.txt "
-    w += 'Output from solutions can be seen in plot.pdf'
-    f = open('out.txt','w')
-    f.write(w)
-    f.close()
-probA()
+    print('Output from solutions can be seen in plot.pdf')
+    print('Problem B is solved, as the saved path is used for plotting')

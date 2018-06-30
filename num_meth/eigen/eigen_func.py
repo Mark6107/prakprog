@@ -1,5 +1,4 @@
 import numpy as np
-import copy 
 from lin_eq import *
 from math import *
 
@@ -24,7 +23,7 @@ def Jac_eig(A:matrix,eps=1e-6):
     
     return V,A
 
-def Jac_eig_n(A:matrix,n:int=None,t=False,eps=1e-10):
+def Jac_eig_n(A:matrix,n:int=None,trans=False,eps=1e-10):
     if not n:
         n = A.size1
     else:
@@ -39,9 +38,9 @@ def Jac_eig_n(A:matrix,n:int=None,t=False,eps=1e-10):
     for p in range(n-1):
         while sum([abs(A[p,j]) for j in range(p+1,A.size2)])>eps:
             for q in range(p+1,A.size1):
-                if not t:
+                if not trans:
                     t = 0.5*np.arctan2(2.0*A[p,q],A[q,q]-A[p,p])
-                elif t:
+                elif trans:
                     t = 0.5*(np.pi+np.arctan2(2.0*A[p,q],A[q,q]-A[p,p]))
                 s = np.sin(t)
                 c = np.cos(t)

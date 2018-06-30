@@ -1,0 +1,11 @@
+Problem A:
+Fitting dataset with linear combination of functions
+
+Functions:
+[log(x),1,x]
+
+Fitted c parameters:
+[7.706277164096648, 0.9904725310400398, -1.996411436163704]
+
+Unceartainties of c parameters:
+[0.27465644129961303, 0.24817971013031875, 0.020819854116527182]
